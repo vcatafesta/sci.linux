@@ -1,0 +1,252 @@
+﻿# compiladores - usar na linha de comando
+#-comp=msvc
+#-comp=bcc
+#-comp=mingw
+#-comp=watcom
+#-comp=poc
+
+######################################################################################
+# /hmg.3.4.4
+######################################################################################
+#-ic:\hmg.3.4.4\include
+#{mingw64}-Lc:\hmg.3.4.4\lib-64
+#{mingw64}\hmg.3.4.4\hmg64.hbc
+
+#-ldflag=-pthread  
+#-ldflag=-static-libgcc
+#-ldflag=-static-libstdc++  
+#-ldflag=-static
+#-ldflag=-lpthread
+#-gtgui 
+#-gtwin 
+
+#-info
+#-mt 
+#-run
+#-gui
+#resources/hmg32.rc 
+#resources/filler.rc
+#-lhmg-64
+#-lcrypt-64
+#-ledit-64
+#-leditex-64
+#-lgraph-64
+#-lhbvpdf-64
+#-lhfcl-64
+#-lhmg-64
+#-lini-64
+#-lreport-64
+
+######################################################################################
+# /hwgui-src
+######################################################################################
+# adapt path to base directory of HwGUI
+#-env:HWGUI_DIR=C:\hwgui-src
+-n2
+-b
+-static
+#-fullstatic
+#-w
+#-q0
+#-es2
+#-gui
+#-mt
+#-strip
+
+#-i${HWGUI_DIR}/include
+#{bcc}-L${HWGUI_DIR}/lib/bcc
+#{mingw}-L${HWGUI_DIR}/lib/mingw
+#{mingw64}-L${HWGUI_DIR}/lib/mingw64
+#-lhbxml
+#-lhwgui
+#-lprocmisc
+#{win}-manifest=${HWGUI_DIR}/image/WindowsXP.Manifest
+
+######################################################################################
+# /github/letodbf
+######################################################################################
+#{win}-env:LETO_DIR=..\letodb
+#{win}-i${LETO_DIR}/include
+#{win}{bcc}letodb\letodb.hbc
+#{win}{mingw|mingw64}\letodb\letodb.hbc
+
+#{linux}-env:LETO_DIR=/home/vcatafesta/github/LetoDBf
+#{linux}-i${LETO_DIR}/include
+#{linux}{gcc}/letodb.hbc
+######################################################################################
+
+#-b
+#-beep
+#-trace
+-inc
+-info
+#-inc-
+#-rebuild
+#-q
+#-p
+-icon=sci.ico
+-osci
+#-o..\release\sci
+#-o${hb_comp}\SCI
+#-compr=max
+#-w3 
+#-mt
+#-std
+#-gui
+#-mwindows
+#-gc1
+#-kc
+
+#-workdir=C:\lixo
+
+#especifica flags para o Harbour
+#-prgflag=<f> 
+#-prgflag= -ic:\c2wm\harbour\include;c:\c2wm\include;c:\c2wm\mingw\include;c:\c2w\include
+{win}-prgflag= -i..\include;
+{linux}-prgflag= -i../include;
+-L/usr/lib/harbour
+
+#especifica flags para o compilador C
+#-cflag=<f> 
+#-cflag= -cpp -w0 -Wwrite-strings -Wunused-variable -Wformat
+-cflag= -cpp -w0 
+
+#especifica flags para o compilador de recursos (apenas windows)
+#-resflag=<f> 
+
+#especifica flags para o linkeditor (executável)
+#-ldflag=<f> 
+#-ldflag=-Wl,--allow-multiple-definition
+
+#informar flags para o linkeditor (biblioteca dinânica)
+#-dflag=<f> 
+
+#passa flag para o linkeditor (lib estática)
+#-aflag=<f> 
+
+#para gerar uma biblioteca
+#-hblib funcoes.prg -ofuncoes
+
+#Biblioteca C3
+#-lccc32
+#-ldbfcdx32
+#-ldbfntx32
+#-ledbfcdx32
+#-lgui32
+#-lobjt32
+#-loops32
+#-ltools32
+#-lwinapi32
+
+#-lc:\c2wm\lib\liblicen.a
+#-Lc:\harbouri\lib\win\msvc -lhbblink
+#-Lc:\harbouri\lib\win\msvc -lhbct
+#-Lc:\harbouri\lib\win\msvc -lhbxpp
+#-Lc:\harbouri\lib\win\msvc -lxhb
+#-Lc:\harbouri\lib\win\msvc -lhboslib
+#-Lc:\harbouri\lib\win\msvc -lhbct
+#-Lc:\harbouri\lib\win\msvc -lhbgt
+#-Lc:\harbouri\lib\win\msvc -lxhb
+#-Lc:\harbouri\lib\win\msvc -lhbwin
+#-Lc:\harbouri\lib\win\msvc -lhbnf
+
+#-Lc:\harbour\prg           -lmouse
+#-Lc:\harbour\prg           -lfunckycl
+#-Lc:\harbour\prg           -lfunckyvm
+
+{win}-prgflag= -ic:\sci\include
+{win}-i\sci\include
+{linux}-prgflag= -i../include
+{linux}-i../include
+{linux}-i/usr/include/harbour
+{linux}-i/usr/include
+{mingw|mingw64}-ldflag=-Wl,--allow-multiple-definition
+
+sci.prg
+{win}sciapiwin.c
+{linux}sciapilinux.c
+{win}api.prg
+dbfio.prg
+#sciext.prg
+#winapi.c 
+achoice.prg
+dbedit.prg
+apoio.prg
+chelan.prg
+diretori.prg
+funcoes.prg
+getsys.prg
+lista1la.prg
+listalan.prg
+orcalan.prg
+pagalan.prg
+pontolan.prg
+rddsys.prg
+recelan.prg
+scplan.prg
+sixtools.prg
+suporte.prg
+venlan.prg
+#errorsys.prg
+
+tambient.prg
+tbox.prg
+tbrowse.prg
+tget.prg
+tindice.prg
+tini.prg
+tmenu.prg
+textrato.prg
+tprotege.prg
+treceposi.prg
+trelato.prg
+tdbf.prg
+tstring.prg
+tprinter.prg
+tpdf.prg
+tfile.prg
+browsearraysrc.prg
+#tvmenu.prg
+#tgui.prg
+#printdc.c
+#romcksum.c
+
+#Bibliotecas
+-lz
+-lpng
+-lhbblink
+-lhbct
+-lhbxpp
+-lxhb
+-lhboslib
+-lhbgt
+{win}-lhbwin
+-lhbnf
+-lhbgzio
+-lhbmemio
+#letodbf novo
+#-lleto
+-lrddleto
+
+hbhpdf.hbc
+hbblink.hbc 
+hbct.hbc 
+hbxpp.hbc
+xhb.hbc 
+hboslib.hbc 
+hbgt.hbc 
+{win}hbwin.hbc 
+hbnf.hbc 
+hbgzio.hbc 
+hbmemio.hbc
+letodb.hbc
+{linux}hbcups.hbc
+
+#sci.hbc
+hbmzip.hbc
+hbmisc.hbc
+hbnetio.hbc
+rddsql.hbc
+hbmemio.hbc
+hbcups.hbc
+#hbsqlit3.hbc

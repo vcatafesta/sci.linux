@@ -1,0 +1,10 @@
+SET PRINT ON
+SET DEVI TO PRINT
+SET CONS OFF
+SET PRINT TO
+
+? set(_SET_PRINTER, .t.)
+? set(_SET_DEVICE, "PRINTER")
+? set(_SET_DEVICE, .f.)
+? set(_SET_CONSOLE, .t.)
+
