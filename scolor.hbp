@@ -1,0 +1,41 @@
+#---------------------------
+# Nome do Execut vel
+# ---------------------------
+-oscolor
+# ---------------------------
+# Bibliotecas
+# ---------------------------
+-lhwgui
+-lprocmisc
+-lhbgt
+-lgtwvg
+-lgtwvt
+-lhbct
+-lhbwin
+-lhbnf
+-lxhb
+-lhbblink
+# ---------------------------
+# Caminhos dos Includes
+# ---------------------------
+-incpath=D:\HARBOUR32\hwgui\include;
+# ---------------------------
+# Caminho da Lib HPROC 
+# ---------------------------
+-Ld:\HARBOUR32\hwgui\lib;
+# ---------------------------
+# Outros Parƒmetros
+# ---------------------------
+-gtgui
+-workdir=.\OBJ\
+-head=full
+-n
+-warn=no
+-inc
+-b
+-dHARBOUR
+#-icon=power2.ico
+# ---------------------------
+# Prg(s) e Rc(s)
+# ---------------------------
+scolor.prg

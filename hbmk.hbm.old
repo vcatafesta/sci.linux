@@ -1,0 +1,51 @@
+-w0
+-es2
+#additional path to search for libraries
+#-L./ 
+
+{win}-prgflag= -i..\include;
+{win}-prgflag= -ic:\sci\include
+{win}-cflag= -cpp -w0 
+{win}-i\sci\include
+{mingw|mingw64}-ldflag=-Wl,--allow-multiple-definition 
+
+{linux}-prgflag= -i../include;
+{linux}-i../include
+#{linux}-ldflag=-Wl,--allow-multiple-definition -Wno-unused-local-typedefs -Wno-unused-result
+#{linux}-cflag=-cpp
+#{linux}-cflag=-Wall
+{linux}-cflag=-Wno-unused-result
+{linux}-cflag=-Wno-unused-value
+{linux}-cflag=-Wno-unused-variable
+{linux}-cflag=-Wno-unused-function
+{linux}-cflag=-Wno-unused-label
+
+hbct.hbc
+hbmemio.hbc
+hbhpdf.hbc
+hbblink.hbc
+hbct.hbc
+hbxpp.hbc
+xhb.hbc
+hboslib.hbc
+hbgt.hbc
+{win}hbwin.hbc
+hbnf.hbc
+hbgzio.hbc
+hbmemio.hbc
+letodb.hbc
+{linux}hbcups.hbc
+{linux}/home/vcatafesta/github/hwgui/hwgui.hbc
+
+#-lsciapilinux
+-lncurses
+
+#sci.hbc
+hbmzip.hbc
+hbmisc.hbc
+hbnetio.hbc
+rddsql.hbc
+hbunix.hbc
+#gtwvg.hbc
+#hbsqlit3.hbc
+#hbicu.hbc

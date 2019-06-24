@@ -1,0 +1,22 @@
+#!/bin/bash
+#
+# bem simples vc da a quantidade de arquivo que quer
+# criar, e ele atribui o nome do arquivo (
+# este nome vc tambe fornece) com uma numeracao
+# como vc mesmo propos
+#
+# as definicoe scomecam com 0,1,2 etc...
+#
+echo -e "Sequencia :"; read arquivo
+echo -e "Extensao  :"; read ext
+echo -e "Quantidade:"; read quantidade
+
+echo -e "Criando os arquivos...\n";
+variavel="0"
+while [ $variavel -lt $quantidade ]; do
+arq=$arquivo$variavel
+touch $arq.$ext
+echo -e "$arq.$ext criado \n"
+let variavel=variavel+1
+done
+

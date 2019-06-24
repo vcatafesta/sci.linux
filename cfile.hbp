@@ -1,0 +1,13 @@
+
+-info
+-ocfile
+
+cfile.prg
+
+-lrddleto
+-lhbmemio
+-lhbgt
+-lhwgui
+-lhbxml
+-lprocmisc
+#-ic:\hwgui-src\include

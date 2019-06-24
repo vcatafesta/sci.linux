@@ -1,0 +1,10 @@
+doskey xdel=rm -vfr $1
+doskey ddel=rm -vfr $1
+doskey hb34=\hb34\bin\rmake.bat
+doskey hb32=\sci\src\rmake.bat
+doskey letodbf=cd c:\letodbf
+doskey letobin=cd c:\sci\letodbf\bin
+doskey cds=cd c:\sci\src
+doskey cdy=cd c:\sys\sci
+doskey sys=cd c:\sys\sci
+doskey gh=cd c:\github

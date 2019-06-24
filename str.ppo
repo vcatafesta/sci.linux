@@ -1,0 +1,829 @@
+*
+* Program str
+*
+* Copyright 2007-2018 Vilmar Catafesta [vcatafesta@gmail.com]
+*
+* ∞∞∞±±≤≤≤€€€
+*
+#include "sci.ch"
+#include "tstring.prg"
+
+#xtranslate hb_mutexLock( <x>, <n> ) 	=> iif(! HB_ISNUMERIC(<n>), hb_mutexLock(<x>) iif(<n> <= 0, hb_MutexTryLock(<x>), hb_MutexTimeOutLock(<x>, <n>)))
+//#xtranslate str(<xValue>)  				=> iif(hb_isNumeric(<xValue>), hb_nToc(<xValue>), <xValue>)
+//#xtranslate trim(<xValue>)  			=> ltrim(rtrim(iif(hb_isNumeric(<xValue>), hb_nToc(<xValue>), <xValue>)))
+#xtranslate alltrim(<xValue>)  			=> ltrim(rtrim(<xValue>))
+
+def main(...)
+	LOCAL x := 99.99
+	//LOCAL x := "Galego Vcatafesta Evili"
+	LOCAL s := TString():New()
+
+	REQUEST HB_LANG_PT
+	hb_langSelect( "pt" )
+
+	cls
+	? "Str, Copyright(c) 2018, Vilmar Catafesta"
+	? "Versao Harbour : ", hb_Version(HB_VERSION_HARBOUR )
+	? "Compiler C++   : ", hb_Version(HB_VERSION_COMPILER)
+	? "Computer       : ", NetName()
+	?
+	?
+	? lin()
+	?
+
+	//nKey := inkey(0)
+	? "HB_KEYSETLAST(27)", HB_KEYSETLAST(27)
+	? "HB_KEYCLEAR()", HB_KEYCLEAR()
+	? "HB_KEYLAST()", HB_KEYLAST()
+
+	? "valtype :", valtype(s)
+	? "changed :", s:changed
+	? "get     :", s:get
+	? "len     :", s:len
+	? "value   :", s:value
+
+	? replicate("=", x)
+	? "set     :", s:set := "vilmar catafesta"
+	? "get     :", s:get
+	? "type    :", s:type
+	? "len     :", s:len
+	? "changed :", s:changed
+	? "value   :", s:value
+	? "upcase  :", s:upcase
+	? "value   :", s:value
+	? "capitalize :", s:capitalize
+	? "capitalize :", capitalize(s:value)
+
+	? replicate("=", x)
+
+	? "value   :", s:set := replicate("*", 10)
+	? "get     :", s:get
+	? "len     :", s:len
+	? "changed :", s:changed
+	? "value   :", s:value
+	? "valtype :", valtype(s:value)
+	? "len     :", len(s:value)
+	s:destroy()
+	? "len     :", len(s:value)
+	? lin()
+
+	cNome := 1
+	? procname() + "(" + alltrim(procline()) + ")", valtype(cnome), strzero(cnome, 20, 2) //, valtype(strzero(cnome,10))
+
+    cNome := "VILMAR"
+	? procname() + "(" + alltrim(procline()) + ")", valtype(cnome), strzero(cnome, 20, 2) //, valtype(strzero(cnome,10))
+	//? procname() + "(" + alltrim(procline()) + ")", valtype(cnome), str(cnome),  valtype(str(cnome))
+	//? procname() + "(" + alltrim(procline()) + ")", valtype(cnome), ltrim(cnome), valtype(trim(cnome))
+	//? procname() + "(" + alltrim(procline()) + ")", valtype(cnome), Alltrim(cnome), valtype(Alltrim(cnome))
+	//? procname() + "(" + alltrim(procline()) + ")", valtype(nil),   str(nil, 5), valtype(str(nil,5))
+	//? procname() + "(" + alltrim(procline()) + ")", valtype("VILMAR"),  str("VILMAR"), valtype(str("VILMAR"))
+	//? procname() + "(" + alltrim(procline()) + ")", valtype("VILMAR"),  str("VILMAR", 5), valtype(str("VILMAR",5))
+	//? procname() + "(" + alltrim(procline()) + ")", valtype({}),  str({}, 5), valtype(str({},5))
+	//?
+	quit
+
+def lin()
+	return(replicate("=", 100))
+
+#pragma BEGINDUMP
+	// synonymn for MS_* 
+	HB_FUNC_TRANSLATE(TRIM,    		RTRIM)
+	HB_FUNC_TRANSLATE(MS_TRIM,    	RTRIM)
+	HB_FUNC_TRANSLATE(MS_LTRIM,   	LTRIM)
+	HB_FUNC_TRANSLATE(MS_STRZERO, 	STRZERO)
+	HB_FUNC_TRANSLATE(MS_LEN,     	LEN)
+	HB_FUNC_TRANSLATE(MS_EMPTY,     EMPTY)
+
+	#include "hbapi.h"
+	#include "hbapiitm.h"
+	#include "hbapierr.h"
+	#include "ctype.h"
+	#include "hbapi.h"
+	#include "hbapicdp.h"
+	#include "hbapigt.h"
+	#include "hbgtcore.h"
+	#include "hbset.h"
+	#include "hbstack.h"
+	#include "hbvm.h"
+	#include "string.h"
+	#include "iostream"
+   
+
+	typedef char				   githMS_CHAR;
+	typedef const char    		MS_TCHAR;
+	typedef HB_UCHAR			   MS_UCHAR;
+	typedef HB_SIZE            MS_SIZE;
+	typedef int                MS_INT;
+	typedef unsigned long int  MS_ULINT;
+	typedef short              MS_SHORT;
+	typedef size_t				   MS_SIZE_T;
+	typedef char 				   *TString;
+   
+   using namespace std;
+
+	TString space(int x, char ch) {
+		TString buff = (char *)malloc(x * sizeof(char *));
+
+		if(buff != 0)
+			memset(buff, ch, x);
+
+		buff[x] = 0;
+		return buff;
+	}
+
+HB_FUNC( STRZEROX )
+	{
+		int iParams          = hb_pcount();
+      	int iLen             = hb_parni(2);
+		const char *pString  = hb_parc(1);
+		PHB_ITEM pNumber 	   = hb_param( 1, HB_IT_NUMERIC );
+		PHB_ITEM pWidth  	   = NULL;
+		PHB_ITEM pDec    	   = NULL;
+
+		if( iParams >= 1 && iParams <= 3 )
+		{
+			//const char *pString  = hb_parc(1);
+			//PHB_ITEM pNumber 	   = hb_param( 1, HB_IT_NUMERIC );
+			//PHB_ITEM pWidth  	   = NULL;
+			//PHB_ITEM pDec    	   = NULL;
+
+			if( iParams >= 2 )
+			{
+				pWidth = hb_param( 2, HB_IT_NUMERIC );
+				if( pWidth == NULL )
+               pNumber = NULL;
+				else if( iParams >= 3 )
+				{
+					pDec = hb_param( 3, HB_IT_NUMERIC );
+					if( pDec == NULL )
+						pNumber = NULL;
+				}
+			}
+
+			if(pNumber || pString)
+			{
+        
+            char *szResult = hb_itemStr( pNumber, pWidth, pDec ); 
+            if (pString){
+               char dest[200];
+               szResult = strdup(pString);
+               int nx   = (int)strlen(szResult);               
+               memset(dest, 32, iLen-nx); 
+               dest[iLen-nx] = '\0';                  
+               strcat(dest, szResult);                              
+               szResult = dest;               
+            }
+            //cout << endl;
+            //printf("%i", (int)strlen(szResult));
+            
+				if( szResult )
+				{
+					HB_SIZE nPos = 0;
+
+					while( szResult[ nPos ] != '\0' && szResult[ nPos ] != '-' ){
+                  //printf("\t%d", szResult[nPos]);
+						nPos++;
+               }
+
+					if( szResult[ nPos ] == '-' )
+					{
+						// NOTE: Negative sign found, put it to the first position 
+
+						szResult[ nPos ] = ' ';
+
+						nPos = 0;
+						while( szResult[ nPos ] != '\0' && szResult[ nPos ] == ' ' )
+							szResult[ nPos++ ] = '0';
+
+						szResult[ 0 ] = '-';
+					}
+					else
+					{
+						// Negative sign not found 
+
+						nPos = 0;
+						while( szResult[ nPos ] != '\0' && szResult[ nPos ] == ' ' )
+							szResult[ nPos++ ] = '0';
+					}               
+               //printf("\t%s", pString);
+               //printf("\t%s", szResult);
+					hb_retc_buffer( szResult );
+				}
+				else                  
+                  //hb_retc_buffer( pString );
+						hb_retc_null();
+			}
+			else
+			
+	#ifdef HB_CLP_STRICT
+				// NOTE: In CA-Cl*pper StrZero() is written in Clipper, and will call
+				//			Str() to do the job, the error (if any) will also be thrown
+				//			by Str().  [vszakats]
+				hb_errRT_BASE_SubstR( EG_ARG, 1099, NULL, "STR", HB_ERR_ARGS_BASEPARAMS );
+	#else
+				hb_errRT_BASE_SubstR( EG_ARG, 6003, NULL, HB_ERR_FUNCNAME, HB_ERR_ARGS_BASEPARAMS );
+	#endif
+		}
+
+	}
+
+	HB_FUNC( STR )
+	{
+		int iParams      		= hb_pcount();
+		const char *string		= hb_parc(1);;
+		PHB_ITEM pNumber 		= hb_param( 1, HB_IT_NUMERIC );
+		PHB_ITEM pWidth  		= NULL;
+		PHB_ITEM pDec    		= NULL;
+
+		if( iParams >= 2 )
+		{
+			pWidth = hb_param( 2, HB_IT_NUMERIC );
+			if( pWidth == NULL )
+				pNumber = NULL;
+			else if( iParams >= 3 )
+			{
+				pDec = hb_param( 3, HB_IT_NUMERIC );
+				if( pDec == NULL )
+					pNumber = NULL;
+			}
+		}
+
+		if( pNumber )
+		{
+			char * szResult = hb_itemStr( pNumber, pWidth, pDec );
+
+			if( szResult )
+				hb_retc_buffer( szResult );
+			else
+				//hb_retc_null();
+				hb_retc(string);
+		}
+		else
+			//hb_errRT_BASE_SubstR( EG_ARG, 1099, NULL, HB_ERR_FUNCNAME, HB_ERR_ARGS_BASEPARAMS );
+				hb_retc(string);
+	}
+
+
+	// trims from the left, and returns a new pointer to szText 
+	// also returns the new length in lLen 
+	const char * hb_strLTrim( const char * szText, HB_SIZE * nLen )
+	{
+		HB_TRACE( HB_TR_DEBUG, ( "hb_strLTrim(%s, %p)", szText, ( void * ) nLen ) );
+
+		while( *nLen && HB_ISSPACE( *szText ) )
+		{
+			szText++;
+			( *nLen )--;
+		}
+
+		return szText;
+	}
+
+	// return length of szText ignoring trailing white space (or true spaces) 
+	HB_SIZE hb_strRTrimLen( const char * szText, HB_SIZE nLen, HB_BOOL bAnySpace )
+	{
+		HB_TRACE( HB_TR_DEBUG, ( "hb_strRTrimLen(%s, %lu. %d)", szText, nLen, ( int ) bAnySpace ) );
+
+		if( bAnySpace )
+		{
+			while( nLen && HB_ISSPACE( szText[ nLen - 1 ] ) )
+				nLen--;
+		}
+		else
+		{
+			while( nLen && szText[ nLen - 1 ] == ' ' )
+				nLen--;
+		}
+
+		return nLen;
+	}
+
+	// trims leading spaces from a string 
+
+	HB_FUNC( LTRIM )
+	{
+		PHB_ITEM pText = hb_param( 1, HB_IT_STRING );
+
+		if( pText )
+		{
+			HB_SIZE nLen;
+			HB_SIZE nSrc;
+			const char * szText;
+
+			nLen   = hb_itemGetCLen( pText );
+			nSrc   = hb_itemGetCLen( pText );
+			szText = hb_strLTrim( hb_itemGetCPtr( pText ), &nLen );
+
+			if( nLen == nSrc )
+				hb_itemReturn( pText );
+			else
+				hb_retclen( szText, nLen );
+		}
+		else 
+		{
+			// NOTE: "TRIM" is correct here [vszakats] 
+			// hb_errRT_BASE_SubstR( EG_ARG, 1100, NULL, "TRIM", HB_ERR_ARGS_BASEPARAMS );
+
+			int iParams      		= hb_pcount();
+			const char *string	= hb_parc(1);;
+			PHB_ITEM pNumber 		= hb_param( 1, HB_IT_NUMERIC );
+			PHB_ITEM pWidth  		= NULL;
+			PHB_ITEM pDec    		= NULL;
+
+			if( iParams >= 2 )
+			{
+				pWidth = hb_param( 2, HB_IT_NUMERIC );
+				if( pWidth == NULL )
+					pNumber = NULL;
+				else if( iParams >= 3 )
+				{
+					pDec = hb_param( 3, HB_IT_NUMERIC );
+					if( pDec == NULL )
+						pNumber = NULL;
+				}
+			}
+
+			if( pNumber )
+			{
+				char * szResult = hb_itemStr( pNumber, pWidth, pDec );
+
+				if( szResult )
+					hb_retc_buffer( szResult );
+				else		   
+					//hb_retc_null();
+					hb_retc(string);
+			}
+			else
+				//hb_errRT_BASE_SubstR( EG_ARG, 1101, NULL, HB_ERR_FUNCNAME, HB_ERR_ARGS_BASEPARAMS );
+				hb_retc(string);				
+		}
+	}
+
+
+	HB_FUNC( RTRIM )
+	{
+		PHB_ITEM pText   = hb_param( 1, HB_IT_STRING );
+
+		if( pText )
+		{
+			HB_SIZE nLen, nSrc;
+			const char * szText = hb_itemGetCPtr( pText );
+
+			nSrc = hb_itemGetCLen( pText );
+			nLen = hb_strRTrimLen( szText, nSrc, HB_FALSE );
+
+			if( nLen == nSrc )
+				hb_itemReturn( pText );
+			else
+				hb_retclen( szText, nLen );
+		}
+		else
+		{
+
+			if( HB_ISNUM(1))
+			{
+				// NOTE: "TRIM" is correct here [vszakats] 
+				//hb_errRT_BASE_SubstR( EG_ARG, 1100, NULL, "TRIM", HB_ERR_ARGS_BASEPARAMS );
+				//hb_retni((HB_SIZE)pNumber);
+
+				int iParams      		= hb_pcount();
+				const char *string	= hb_parc(1);;
+				PHB_ITEM pNumber 		= hb_param( 1, HB_IT_NUMERIC );
+				PHB_ITEM pWidth  		= NULL;
+				PHB_ITEM pDec    		= NULL;
+
+				if( iParams >= 2 )
+				{
+					pWidth = hb_param( 2, HB_IT_NUMERIC );
+					if( pWidth == NULL )
+						pNumber = NULL;
+					else if( iParams >= 3 )
+					{
+						pDec = hb_param( 3, HB_IT_NUMERIC );
+						if( pDec == NULL )
+							pNumber = NULL;
+					}
+				}
+
+				if( pNumber )
+				{
+					char * szResult = hb_itemStr( pNumber, pWidth, pDec );
+
+					if( szResult )
+						hb_retc_buffer( szResult );
+					else
+						//hb_retc_null();
+						hb_retc(string);
+				}
+				else
+					//hb_errRT_BASE_SubstR( EG_ARG, 1099, NULL, HB_ERR_FUNCNAME, HB_ERR_ARGS_BASEPARAMS );
+					hb_retc(string);
+			}
+		}
+	}
+
+
+	// trims leading and trailing spaces from a string 
+	// NOTE: The second parameter is a Harbour extension.
+
+	HB_FUNC( ALLTRIM )
+	{
+		PHB_ITEM pText = hb_param( 1, HB_IT_STRING );
+
+		if( pText )
+		{
+			HB_SIZE nLen, nSrc;
+			const char * szText = hb_itemGetCPtr( pText );
+
+			nSrc   = hb_itemGetCLen( pText );
+			nLen   = hb_strRTrimLen( szText, nSrc, HB_FALSE );
+			szText = hb_strLTrim( szText, &nLen );
+
+			if( nLen == nSrc )
+				hb_itemReturn( pText );
+			else
+				hb_retclen( szText, nLen );
+		}
+		else
+	#ifdef HB_COMPAT_C53
+			// NOTE: This runtime error appeared in CA-Cl*pper 5.3 [vszakats] 
+	#ifdef HB_CLP_STRICT
+			hb_errRT_BASE_SubstR( EG_ARG, 2022, NULL, HB_ERR_FUNCNAME, 0 );
+	#else
+			hb_errRT_BASE_SubstR( EG_ARG, 2022, NULL, HB_ERR_FUNCNAME, HB_ERR_ARGS_BASEPARAMS );
+	#endif
+	#else
+			hb_retc_null();
+	#endif
+	}
+
+HB_FUNC( LEN )
+{
+   PHB_ITEM pItem   	= hb_param(1, HB_IT_ANY);
+	PHB_ITEM pWidth 	= NULL;
+	PHB_ITEM	pDec 		= NULL;
+
+   if(pItem){
+		if( HB_IS_NUMERIC(pItem)){
+			char *pText = hb_itemStr(pItem, pWidth, pDec);
+			if( pText ){
+				HB_SIZE nLen, nSrc, nret;
+				const char *szText = hb_itemGetCPtr( pText );
+				nSrc   = strlen( pText );
+				nLen   = hb_strRTrimLen( pText, nSrc, HB_FALSE );
+				szText = hb_strLTrim( pText, &nLen );
+				nret 	 = strlen(szText);
+
+				if(nret)
+				  hb_retns(nret);
+				else
+					hb_errRT_BASE_SubstR( EG_ARG, 1111, NULL, HB_ERR_FUNCNAME, HB_ERR_ARGS_BASEPARAMS );
+					//hb_retc_null();
+				return;
+			}
+		}
+
+		if(pItem){
+			if( HB_IS_STRING( pItem )){
+				HB_SIZE nLen = hb_itemGetCLen( pItem );
+				PHB_CODEPAGE cdp = hb_vmCDP();
+				if( HB_CDP_ISCHARIDX( cdp ) )
+					nLen = hb_cdpTextLen( cdp, hb_itemGetCPtr( pItem ), nLen );
+				hb_retns( nLen );
+				return;
+			}
+			else if( HB_IS_ARRAY( pItem )){
+				hb_retns( hb_arrayLen( pItem ) );
+				return;
+			}
+			else if( HB_IS_HASH( pItem )){
+				hb_retns( hb_hashLen( pItem ) );
+				return;
+			}
+		}
+   }
+	//hb_retc_null();
+   hb_errRT_BASE_SubstR( EG_ARG, 1111, NULL, HB_ERR_FUNCNAME, HB_ERR_ARGS_BASEPARAMS );
+}
+
+	HB_FUNC( EMPTY )
+	{
+		PHB_ITEM pItem = hb_param( 1, HB_IT_ANY );
+		PHB_SYMB pSym;
+		long lDate;
+		long lTime;
+
+		switch( hb_itemType( pItem ) )
+		{
+			case HB_IT_ARRAY:
+				hb_retl( hb_arrayLen( pItem ) == 0 );
+				break;
+
+			case HB_IT_HASH:
+				hb_retl( hb_hashLen( pItem ) == 0 );
+				break;
+
+			case HB_IT_STRING:
+			case HB_IT_MEMO:
+				hb_retl( hb_strEmpty( hb_itemGetCPtr( pItem ), hb_itemGetCLen( pItem ) ) );
+				break;
+
+			case HB_IT_INTEGER:
+				hb_retl( hb_itemGetNI( pItem ) == 0 );
+				break;
+
+			case HB_IT_LONG:
+				hb_retl( hb_itemGetNInt( pItem ) == 0 );
+				break;
+
+			case HB_IT_DOUBLE:
+				hb_retl( hb_itemGetND( pItem ) == 0.0 );
+				break;
+
+			case HB_IT_DATE:
+				hb_retl( hb_itemGetDL( pItem ) == 0 );
+				break;
+
+			case HB_IT_TIMESTAMP:
+				hb_itemGetTDT( pItem, &lDate, &lTime );
+				hb_retl( lDate == 0 && lTime == 0 );
+				break;
+
+			case HB_IT_LOGICAL:
+				hb_retl( ! hb_itemGetL( pItem ) );
+				break;
+
+			case HB_IT_BLOCK:
+				hb_retl( HB_FALSE );
+				break;
+
+			case HB_IT_POINTER:
+				hb_retl( hb_itemGetPtr( pItem ) == NULL );
+				break;
+
+			case HB_IT_SYMBOL:
+				pSym = hb_itemGetSymbol( pItem );
+				if( pSym && ( pSym->scope.value & HB_FS_DEFERRED ) && \
+					 pSym->pDynSym )
+					pSym = hb_dynsymSymbol( pSym->pDynSym );
+				hb_retl( pSym == NULL || pSym->value.pFunPtr == NULL );
+				break;
+
+			default:
+				hb_retl( HB_TRUE );
+				break;
+		}
+	}
+
+static void hb_inkeySetTextKeys( const char * pszText, HB_SIZE nSize, HB_BOOL fInsert )
+{
+   PHB_CODEPAGE cdp = hb_vmCDP();
+   HB_SIZE nIndex   = 0;
+   HB_WCHAR wc;
+
+   if( fInsert )
+   {
+      HB_WCHAR buffer[ 32 ], * keys;
+      HB_SIZE n = 0;
+
+      keys = nSize <= HB_SIZEOFARRAY( buffer ) ? buffer : ( HB_WCHAR * ) hb_xgrab( nSize * sizeof( HB_WCHAR ) );
+      while( HB_CDPCHAR_GET( cdp, pszText, nSize, &nIndex, &wc ) )
+         keys[ n++ ] = wc;
+
+      while( n-- )
+      {
+         int iKey = keys[ n ] >= 128 ? HB_INKEY_NEW_UNICODE( keys[ n ] ) : keys[ n ];
+         hb_inkeyIns( iKey );
+      }
+      if( nSize > HB_SIZEOFARRAY( buffer ) )
+         hb_xfree( keys );
+   }
+   else
+   {
+      while( HB_CDPCHAR_GET( cdp, pszText, nSize, &nIndex, &wc ) )
+      {
+         int iKey = wc >= 128 ? HB_INKEY_NEW_UNICODE( wc ) : wc;
+         hb_inkeyPut( iKey );
+      }
+   }
+}
+
+HB_FUNC( INKEY )
+{
+   int iPCount = hb_pcount();
+
+   hb_retni( hb_inkey( iPCount == 1 || ( iPCount > 1 && HB_ISNUM( 1 ) ),
+                       hb_parnd( 1 ), hb_parnidef( 2, hb_setGetEventMask() ) ) );
+}
+
+HB_FUNC( __KEYBOARD )
+{
+   /* Clear the typeahead buffer without reallocating the keyboard buffer */
+   hb_inkeyReset();
+
+   if( HB_ISCHAR( 1 ) )
+      hb_inkeySetText( hb_parc( 1 ), hb_parclen( 1 ) );
+}
+
+HB_FUNC( HB_KEYCLEAR )
+{
+   hb_inkeyReset();
+}
+
+HB_FUNC( HB_KEYPUT )
+{
+   if( HB_ISNUM( 1 ) )
+   {
+      hb_inkeyPut( hb_parni( 1 ) );
+   }
+   else if( HB_ISCHAR( 1 ) )
+   {
+      hb_inkeySetTextKeys( hb_parc( 1 ), hb_parclen( 1 ), HB_FALSE );
+   }
+   else if( HB_ISARRAY( 1 ) )
+   {
+      PHB_ITEM pArray = hb_param( 1, HB_IT_ARRAY );
+      HB_SIZE nIndex;
+      HB_SIZE nElements = hb_arrayLen( pArray );
+
+      for( nIndex = 1; nIndex <= nElements; ++nIndex )
+      {
+         HB_TYPE type = hb_arrayGetType( pArray, nIndex );
+
+         if( type & HB_IT_NUMERIC )
+         {
+            hb_inkeyPut( hb_arrayGetNI( pArray, nIndex ) );
+         }
+         else if( type & HB_IT_STRING )
+         {
+            hb_inkeySetTextKeys( hb_arrayGetCPtr( pArray, nIndex ),
+                                 hb_arrayGetCLen( pArray, nIndex ), HB_FALSE );
+         }
+      }
+   }
+}
+
+HB_FUNC( HB_KEYINS )
+{
+   if( HB_ISNUM( 1 ) )
+   {
+      hb_inkeyIns( hb_parni( 1 ) );
+   }
+   else if( HB_ISCHAR( 1 ) )
+   {
+      hb_inkeySetTextKeys( hb_parc( 1 ), hb_parclen( 1 ), HB_TRUE );
+   }
+   else if( HB_ISARRAY( 1 ) )
+   {
+      PHB_ITEM pArray = hb_param( 1, HB_IT_ARRAY );
+      HB_SIZE nIndex;
+      HB_SIZE nElements = hb_arrayLen( pArray );
+
+      for( nIndex = 1; nIndex <= nElements; ++nIndex )
+      {
+         HB_TYPE type = hb_arrayGetType( pArray, nIndex );
+
+         if( type & HB_IT_NUMERIC )
+         {
+            hb_inkeyIns( hb_arrayGetNI( pArray, nIndex ) );
+         }
+         else if( type & HB_IT_STRING )
+         {
+            hb_inkeySetTextKeys( hb_arrayGetCPtr( pArray, nIndex ),
+                                 hb_arrayGetCLen( pArray, nIndex ), HB_TRUE );
+         }
+      }
+   }
+}
+
+HB_FUNC( HB_KEYNEXT )
+{
+   hb_retni( hb_inkeyNext( HB_ISNUM( 1 ) ? hb_parni( 1 ) : hb_setGetEventMask() ) );
+}
+
+HB_FUNC( NEXTKEY )
+{
+   hb_retni( hb_inkeyNext( hb_setGetEventMask() ) );
+}
+
+HB_FUNC( HB_KEYLAST )
+{
+   hb_retni( hb_inkeyLast( HB_ISNUM( 1 ) ? hb_parni( 1 ) : hb_setGetEventMask() ) );
+}
+
+HB_FUNC( LASTKEY )
+{
+   hb_retni( hb_inkeyLast( HB_INKEY_ALL ) );
+}
+
+HB_FUNC( HB_KEYSETLAST )
+{
+   if( HB_ISNUM( 1 ) )
+      hb_retni( hb_inkeySetLast( hb_parni( 1 ) ) );
+}
+
+#if defined( HB_LEGACY_LEVEL5 )
+
+HB_FUNC_TRANSLATE( HB_SETLASTKEY, HB_KEYSETLAST )
+
+#endif
+
+HB_FUNC( HB_KEYCODE )
+{
+   const char * szValue = hb_parc( 1 );
+   int iKey;
+
+   if( szValue )
+   {
+      PHB_CODEPAGE cdp = hb_vmCDP();
+      HB_SIZE nIndex = 0;
+      HB_WCHAR wc;
+
+      if( HB_CDPCHAR_GET( cdp, szValue, hb_parclen( 1 ), &nIndex, &wc ) )
+         iKey = wc >= 128 ? HB_INKEY_NEW_UNICODE( wc ) : wc;
+      else
+         iKey = 0;
+   }
+   else
+      iKey = 0;
+
+   hb_retni( iKey );
+}
+
+HB_FUNC( HB_KEYCHAR )
+{
+   char szKeyChr[ HB_MAX_CHAR_LEN ];
+   HB_SIZE nLen;
+
+   nLen = hb_inkeyKeyString( hb_parni( 1 ), szKeyChr, sizeof( szKeyChr ) );
+   hb_retclen( szKeyChr, nLen );
+}
+
+HB_FUNC( HB_KEYSTD )
+{
+   hb_retni( hb_inkeyKeyStd( hb_parni( 1 ) ) );
+}
+
+HB_FUNC( HB_KEYEXT )
+{
+   hb_retni( hb_inkeyKeyExt( hb_parni( 1 ) ) );
+}
+
+HB_FUNC( HB_KEYMOD )
+{
+   hb_retni( hb_inkeyKeyMod( hb_parni( 1 ) ) );
+}
+
+HB_FUNC( HB_KEYVAL )
+{
+   hb_retni( hb_inkeyKeyVal( hb_parni( 1 ) ) );
+}
+
+HB_FUNC( HB_KEYNEW )
+{
+   PHB_ITEM pText = hb_param( 1, HB_IT_STRING );
+   int iMod = hb_parni( 2 );
+   int iKey = pText ? hb_cdpTextGetU16( hb_vmCDP(), hb_itemGetCPtr( pText ),
+                                                    hb_itemGetCLen( pText ) ) : hb_parni( 1 );
+
+   if( iKey >= 127 )
+      iKey = HB_INKEY_NEW_UNICODEF( iKey, iMod );
+   else if( ! pText || ( iMod & ( HB_KF_CTRL | HB_KF_ALT ) ) != 0 )
+      iKey = HB_INKEY_NEW_KEY( iKey, iMod );
+   else
+      iKey = HB_INKEY_NEW_CHARF( iKey, iMod );
+
+   hb_retni( iKey );
+}
+
+MS_CHAR *capitalize(MS_TCHAR *s)
+{
+	MS_SIZE_T nlen = (MS_SIZE_T)strlen(s);
+	MS_CHAR *buf   = space(nlen, 32);
+   MS_SIZE_T i;
+
+    for(i = 0; i< nlen; i++) {
+		  buf[i] = s[i];
+        if((i == 0 || s[i-1] == ' ') && (s[i] >= 'a' &&s[i] <= 'z'))
+            buf[i] = toupper(s[i]);
+    }
+	buf[nlen] = '\0';
+	return buf;	
+}
+
+//==================================================================================================
+
+HB_FUNC( CAPITALIZE )
+{
+   MS_TCHAR *szValue = hb_parc(1);
+
+   if( szValue )
+   {
+      MS_CHAR *pszBuffer = capitalize(szValue);
+		hb_retc(pszBuffer);
+   }
+   else
+      hb_errRT_BASE_SubstR( EG_ARG, 1102, NULL, HB_ERR_FUNCNAME, HB_ERR_ARGS_BASEPARAMS );
+}
+
+#pragma ENDDUMP	

@@ -1,0 +1,24 @@
+﻿# compiladores - usar na linha de comando
+-n2
+-b
+-inc
+-info
+-icon=sci.ico
+-otpdf
+
+{win}-prgflag= -i..\include;
+{linux}-prgflag= -i../include;
+-cflag= -cpp -w0 
+{win}-prgflag= -ic:\sci\include
+{win}-i\sci\include
+{linux}-prgflag= -i../include
+{linux}-i../include
+{mingw|mingw64}-ldflag=-Wl,--allow-multiple-definition
+
+-lz
+-lpng
+
+tpdf.prg
+
+letodb.hbc
+hbmemio.hbc

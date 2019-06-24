@@ -1,0 +1,14 @@
+
+-info
+-ocprint
+-p
+
+cprint.prg
+
+-lrddleto
+-lhbmemio
+-lhbgt
+#-lhwgui
+#-lhbxml
+#-lprocmisc
+#-ic:\hwgui-src\include

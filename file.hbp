@@ -1,0 +1,9 @@
+-info
+-ofile.exe
+
+file.prg
+tini.prg
+
+-lrddleto
+-lhbmemio
+-lhbgt

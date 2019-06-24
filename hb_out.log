@@ -1,0 +1,308 @@
+Application Internal Error - /home/vcatafesta/sci/src.linux/sci
+Terminated at: 2018-11-15 17:37:54
+Erro irrecuper vel 9003: Muitas chamadas recursivas ao manipulador de erros
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from MAIN$(104) in sci.prg
+------------------------------------------------------------------------
+Application Internal Error - /home/vcatafesta/sci/src.linux/sci
+Terminated at: 2018-11-15 17:44:10
+Erro irrecuper vel 9003: Muitas chamadas recursivas ao manipulador de erros
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from MAIN$(104) in sci.prg
+------------------------------------------------------------------------
+Application Internal Error - /home/vcatafesta/sci/src.linux/sci
+Terminated at: 2018-11-15 17:44:28
+Erro irrecuper vel 9003: Muitas chamadas recursivas ao manipulador de erros
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from MAIN$(104) in sci.prg
+------------------------------------------------------------------------
+Application Internal Error - /home/vcatafesta/sci/src.linux/sci
+Terminated at: 2018-11-15 17:44:32
+Erro irrecuper vel 9003: Muitas chamadas recursivas ao manipulador de erros
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from DBUSEAREA(0)
+Called from NETUSE(1244) in dbfio.prg
+Called from USAARQUIVO(1323) in dbfio.prg
+Called from TPRINTER:ESCOLHEIMPRESSORAUSUARIO(159) in tprinter.prg
+Called from INSTRU80(871) in apoio.prg
+Called from PRINTON(995) in apoio.prg
+Called from PRINTOFF(1039) in apoio.prg
+Called from MACROERRO(7731) in sci.prg
+Called from (b)ERRORSYS(7446) in sci.prg
+Called from MAIN$(104) in sci.prg
+------------------------------------------------------------------------

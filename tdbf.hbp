@@ -1,0 +1,152 @@
+﻿#compiladores - usar na linha de comando
+#-comp=msvc
+#-comp=bcc
+#-comp=mingw
+#-comp=watcom
+#-comp=poc
+
+#-b
+#-beep
+#-trace
+#-info
+#-q
+#-p
+#-icon=sci.ico
+-otdbf
+#-o..\release\sci
+#-o${hb_comp}\SCI
+-inc
+-mt
+#-compr=max
+#-w3 
+#-gui
+#-mwindows
+#-gc1
+#-kc
+
+#especifica flags para o Harbour
+#-prgflag=<f> 
+#-prgflag= -ic:\c2wm\harbour\include;c:\c2wm\include;c:\c2wm\mingw\include;c:\c2w\include
+
+#especifica flags para o compilador C
+#-cflag=<f> 
+#-cflag= -cpp -w0 -Wwrite-strings -Wunused-variable -Wformat
+-cflag= -cpp -w0
+
+#especifica flags para o compilador de recursos (apenas windows)
+#-resflag=<f> 
+
+#especifica flags para o linkeditor (executável)
+#-ldflag=<f> 
+#-ldflag=-Wl,--allow-multiple-definition
+
+#informar flags para o linkeditor (biblioteca dinânica)
+#-dflag=<f> 
+
+#passa flag para o linkeditor (lib estática)
+#-aflag=<f> 
+
+#para gerar uma biblioteca
+#-hblib funcoes.prg -ofuncoes
+
+#Biblioteca C3
+#-lccc32
+#-ldbfcdx32
+#-ldbfntx32
+#-ledbfcdx32
+#-lgui32
+#-lobjt32
+#-loops32
+#-ltools32
+#-lwinapi32
+
+#-lc:\c2wm\lib\liblicen.a
+#-Lc:\harbouri\lib\win\msvc -lhbblink
+#-Lc:\harbouri\lib\win\msvc -lhbct
+#-Lc:\harbouri\lib\win\msvc -lhbxpp
+#-Lc:\harbouri\lib\win\msvc -lxhb
+#-Lc:\harbouri\lib\win\msvc -lhboslib
+#-Lc:\harbouri\lib\win\msvc -lhbct
+#-Lc:\harbouri\lib\win\msvc -lhbgt
+#-Lc:\harbouri\lib\win\msvc -lxhb
+#-Lc:\harbouri\lib\win\msvc -lhbwin
+#-Lc:\harbouri\lib\win\msvc -lhbnf
+
+#-Lc:\harbour\prg           -lmouse
+#-Lc:\harbour\prg           -lfunckycl
+#-Lc:\harbour\prg           -lfunckyvm
+
+-prgflag= -ic:\sci\include
+-ic:\sci\include
+#-ldflag=-Wl,--allow-multiple-definition
+
+sci.prg
+sciapi.c 
+dbfio.prg
+#sciext.prg
+api.prg
+#winapi.c 
+achoice.prg
+dbedit.prg
+apoio.prg
+chelan.prg
+diretori.prg
+funcoes.prg
+getsys.prg
+lista1la.prg
+listalan.prg
+orcalan.prg
+pagalan.prg
+pontolan.prg
+rddsys.prg
+recelan.prg
+scplan.prg
+sixtools.prg
+suporte.prg
+venlan.prg
+#errorsys.prg
+
+tambient.prg
+tbox.prg
+tbrowse.prg
+tget.prg
+tindice.prg
+tini.prg
+tmenu.prg
+textrato.prg
+tprotege.prg
+treceposi.prg
+trelato.prg
+tdbf.prg
+tstring.prg
+#tvmenu.prg
+#tgui.prg
+#printdc.c
+#romcksum.c
+
+#Bibliotecas
+-lhbblink
+-lhbct
+-lhbxpp
+-lxhb
+-lhboslib
+-lhbgt
+-lhbwin
+-lhbnf
+-lhbgzio
+-lhbmemio
+
+hbblink.hbc 
+hbct.hbc 
+hbxpp.hbc
+xhb.hbc 
+hboslib.hbc 
+hbgt.hbc 
+hbwin.hbc 
+hbnf.hbc 
+hbgzio.hbc 
+hbmemio.hbc
+
+
+
+

@@ -1,0 +1,9 @@
+LETO_SET( 23, "ON" )
+LETO_SET( 20, "PRINTER" )
+LETO_SET( 17, "OFF" )
+LETO_SET( 24, "" )
+
+QOut( LETO_SET( 23, .T. ) )
+QOut( LETO_SET( 20, "PRINTER" ) )
+QOut( LETO_SET( 20, .F. ) )
+QOut( LETO_SET( 17, .T. ) )

@@ -1,0 +1,71 @@
+﻿#compiladores - usar na linha de comando
+#-comp=msvc
+#-comp=bcc
+#-comp=mingw
+#-comp=watcom
+#-comp=poc
+
+#-b
+-beep
+#-trace
+#-info
+#-icon=sci.ico
+#-o${hb_comp}\SCI
+#-gc1
+#-kc
+-ocfg
+#-inc
+-mt
+# -compr=max
+-run
+#-q
+#-prgflag= -ic:\c2wm\harbour\include;c:\c2wm\include;c:\c2wm\mingw\include;c:\c2w\include
+#-ldflag=-W1,--allow-multiple-definition
+#-mwindows
+
+#linkar com todas as bibliotecas estaticas
+#-fullstatic
+
+#para gerar uma biblioteca
+#-hblib funcoes.prg -ofuncoes
+
+#Bibliotecas
+-lxhb
+#-lhbnf
+#-lhbblink
+#-lhbct
+#-lhbxpp
+#-lhboslib
+#-lhbgt
+#-lhbwin
+
+#Biblioteca C3
+#-lccc32
+#-ldbfcdx32
+#-ldbfntx32
+#-ledbfcdx32
+#-lgui32
+#-lobjt32
+#-loops32
+#-ltools32
+#-lwinapi32
+
+#-lc:\c2wm\lib\liblicen.a
+#-Lc:\harbouri\lib\win\msvc -lhbblink
+#-Lc:\harbouri\lib\win\msvc -lhbct
+#-Lc:\harbouri\lib\win\msvc -lhbxpp
+#-Lc:\harbouri\lib\win\msvc -lxhb
+#-Lc:\harbouri\lib\win\msvc -lhboslib
+#-Lc:\harbouri\lib\win\msvc -lhbct
+#-Lc:\harbouri\lib\win\msvc -lhbgt
+#-Lc:\harbouri\lib\win\msvc -lxhb
+#-Lc:\harbouri\lib\win\msvc -lhbwin
+#-Lc:\harbouri\lib\win\msvc -lhbnf
+
+#-Lc:\harbour\prg           -lmouse
+#-Lc:\harbour\prg           -lfunckycl
+#-Lc:\harbour\prg           -lfunckyvm
+
+-prgflag= -i..\include
+
+cfg.prg
